@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { Task } from './task.entity';
+import { Task } from './task.entity/task.entity';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { UpdateResult, DeleteResult } from 'typeorm';
@@ -16,8 +16,7 @@ export class TaskService {
   }
 
   async findOne(id: number): Promise<Task> {
-    // @ts-ignore
-    return await this.taskRepo.findOne(id);
+    return await this.taskRepo.findOneBy({ id: id });
   }
 
   async create(task: Task): Promise<Task> {
