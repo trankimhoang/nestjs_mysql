@@ -2,14 +2,13 @@ import {
   Body,
   Controller,
   Delete,
-  Get, HttpCode,
+  Get,
   Param,
   Post,
-  Put
-} from "@nestjs/common";
+  Put,
+} from '@nestjs/common';
 import { UserDto } from './user.dto';
 import { UserService } from './user.service';
-import * as process from 'process';
 
 @Controller('users')
 export class UserController {

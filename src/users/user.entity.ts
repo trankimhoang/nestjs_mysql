@@ -6,21 +6,16 @@ export class UserEntity {
   id: number;
 
   @Column()
-  firstName: string;
+  first_name: string;
 
   @Column()
-  lastName: string;
+  last_name: string;
 
   @Column({
     default: false,
   })
-  isActive: boolean;
+  is_active: boolean;
 
-  @Column({
-    type: 'enum',
-    enum: ['admin', 'user'],
-    default: 'admin',
-  })
   @Column({
     type: 'enum',
     enum: ['admin', 'user'],

@@ -3,11 +3,11 @@ import { Expose, Transform } from 'class-transformer';
 export class UserDto {
   @Expose()
   id: number;
-  firstName: string;
-  lastName: string;
-  @Transform(({ obj }) => obj.firstName + ' ' + obj.lastName)
+  first_name: string;
+  last_name: string;
+  @Transform(({ obj }) => obj.first_name + ' ' + obj.last_name)
   @Expose()
-  fullName;
+  full_name;
   @Expose()
-  isActive: boolean;
+  is_active: boolean;
 }
