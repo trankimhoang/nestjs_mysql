@@ -2,7 +2,8 @@ import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { TaskModule } from './task/task.module';
+import { UsersModule } from './users/users.module';
+import { UserEntity } from './users/user.entity';
 
 @Module({
   imports: [
@@ -13,10 +14,10 @@ import { TaskModule } from './task/task.module';
       username: 'root',
       password: '',
       database: 'nestjs_mysql',
-      entities: [__dirname + '/**/*.entity{.ts,.js}'],
+      entities: [UserEntity],
       synchronize: true,
     }),
-    TaskModule,
+    UsersModule,
   ],
   controllers: [AppController],
   providers: [AppService],
