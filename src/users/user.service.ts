@@ -25,12 +25,11 @@ export class UserService {
   }
 
   async findOne(id: string): Promise<UserDto> {
-    const foundUser = await this.userRepository.findOne({
-      where: {
-        id: id as any,
-      },
-    });
-    return plainToInstance(UserDto, foundUser, {
+    const firstUser = await this.userRepository
+      .createQueryBuilder('users')
+      .where('users.id = :id', { id: id })
+      .getOne();
+    return plainToInstance(UserDto, firstUser, {
       excludeExtraneousValues: true,
     });
   }
