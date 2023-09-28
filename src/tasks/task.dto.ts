@@ -1,6 +1,10 @@
-import { IsNotEmpty } from 'class-validator';
+import { Expose } from 'class-transformer';
 
 export class TaskDto {
-  @IsNotEmpty()
+  @Expose()
+  id: number;
+  @Expose()
   task_name: string;
+  @Expose()
+  status: number;
 }
