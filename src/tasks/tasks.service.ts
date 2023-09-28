@@ -26,15 +26,19 @@ export class TasksService {
     });
   }
 
-  async search(task_name: string): Promise<TaskDto[]> {
-    const getTaskByName = await this.taskRepository
-      .createQueryBuilder('tasks')
-      .select('*')
-      .where('tasks.task_name = :task_name', { task_name: task_name })
-      .getMany();
-
+  async search(task_name: string): Promise<TaskDto> {
+    const getTaskByName = await this.taskRepository.findOne({
+      where: { task_name: task_name },
+    });
     return plainToInstance(TaskDto, getTaskByName, {
       excludeExtraneousValues: true,
     });
+    // const getTaskByName = await this.taskRepository
+    //   .createQueryBuilder('tasks')
+    //   .select('tasks.task_name', 'task_name')
+    //   .where('tasks.task_name = :task_name', { task_name })
+    //   .getMany();
+    //
+    // return getTaskByName;
   }
 }
