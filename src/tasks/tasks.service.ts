@@ -41,7 +41,7 @@ export class TasksService {
   //   // return getTaskByName;
   // }
 
-  // C2: craeteQueryBuilder
+  // C2: createQueryBuilder
   async search(task_name: string): Promise<TaskDto[]> {
     const queryBuilder = this.taskRepository.createQueryBuilder('tasks');
     const tasks = await queryBuilder
