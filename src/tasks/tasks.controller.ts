@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Param, Post } from '@nestjs/common';
+import { Body, Controller, Get, Post, Query } from '@nestjs/common';
 import { TasksService } from './tasks.service';
 import { TaskDto } from './task.dto';
 
@@ -16,8 +16,8 @@ export class TasksController {
     return this.tasksService.getAll();
   }
 
-  @Get(':task_name')
-  search(@Param('task_name') task_name: string): Promise<TaskDto> {
+  @Get('search')
+  search(@Query('task_name') task_name: string): Promise<TaskDto[]> {
     return this.tasksService.search(task_name);
   }
 }
