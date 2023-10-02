@@ -26,10 +26,6 @@ export class TasksService {
   }
 
   // async search(task_name: string): Promise<TaskDto[]> {
-  //   const getTaskByName = await this.taskRepository.find({
-  //     where: [{ task_name: Like(`%${task_name}%`) }],
-  //   });
-  //   return plainToInstance(TaskDto, getTaskByName, {
   //     excludeExtraneousValues: true,
   //   });
   //   // const getTaskByName = await this.taskRepository
@@ -51,5 +47,17 @@ export class TasksService {
       .getMany();
 
     return tasks;
+  }
+
+  async update(id: number, taskDto: TaskDto) {
+    const updateTask = this.taskRepository.update(id, taskDto);
+
+    Object.assign(updateTask, taskDto);
+    return updateTask;
+  }
+
+  async deleteTaskById(id: number) {
+    const deleteTask = this.taskRepository.delete(id);
+    return deleteTask;
   }
 }
